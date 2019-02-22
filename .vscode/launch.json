@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - JumpGameII",
+      "request": "launch",
+      "mainClass": "com.nickmeeker.interview.Greedy.JumpGameII",
+      "projectName": "InterviewPrep"
+    }
+  ]
+}
