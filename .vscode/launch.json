@@ -2,6 +2,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - MergeSort",
+      "request": "launch",
+      "mainClass": "com.nickmeeker.interview.Sorts.MergeSort",
+      "projectName": "InterviewPrep"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - LinkedLists",
+      "request": "launch",
+      "mainClass": "com.nickmeeker.interview.LinkedLists.LinkedLists",
+      "projectName": "InterviewPrep"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - JumpGameII",
       "request": "launch",
       "mainClass": "com.nickmeeker.interview.Greedy.JumpGameII",
