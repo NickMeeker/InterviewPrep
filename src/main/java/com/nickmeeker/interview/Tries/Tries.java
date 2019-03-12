@@ -1,4 +1,9 @@
 public class Tries {
+
+  /**
+   * Every node in the trie has an array representing its children (the suffix to that particular node)
+   * and a count, indicating how many words end at that particular node.
+   */
   static class Node {
       private Node[] children;
       private int count;
@@ -7,6 +12,12 @@ public class Tries {
           this.count = 0;
       }
 
+      /**
+       * Insertion function. 
+       * 
+       * Create a node at the index of the first letter in the word, then remove the first letter
+       * and recurse "into" the node at that index.
+       */
       public void insert(String word) {
           if(word.length() == 0) {
               this.incrementCount();
@@ -22,6 +33,11 @@ public class Tries {
           this.children[index].insert(word);
       }
 
+      /**
+       * Find function.
+       * 
+       * Similar to insert, except we're not creating the node.
+       */
       public boolean find(String word) {
           if(word.length() == 0)
               return true;
@@ -35,6 +51,9 @@ public class Tries {
           return this.children[index].find(word);
       }
 
+      /**
+       * Prints the entire trie, indicating where the words are.
+       */
       public void printTrie(String wordSoFar, int index) {
           char letter = this.indexToLetter(index);
           if(index != -1) {
