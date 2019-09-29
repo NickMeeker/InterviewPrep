@@ -1,32 +1,32 @@
 /**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+ * Definition for singly-linked list. public class ListNode { int val; ListNode
+ * next; ListNode(int x) { val = x; } }
  */
-
-/*
-    Just use heaps.
-*/
 class Solution {
-  public ListNode mergeKLists(ListNode[] lists) {
-      if(lists == null) return null;
-      if(lists.length == 0) return null;
-      PriorityQueue<ListNode> heap = new PriorityQueue<>(lists.length, (a,b) -> a.val - b.val);
-      for(ListNode list : lists) {
-          if(list != null)
-              heap.add(list);
-      }
-      ListNode head = new ListNode(-1), temp = head;
-      while(!heap.isEmpty()) {
-          temp.next = heap.poll();
-          temp = temp.next;
-          if(temp.next != null) {
-              heap.add(temp.next);
-          }
-      }
-      return head.next;
-  }
+    public static class ListNodeComparator implements Comparator<ListNode> {
+        @Override
+        public int compare(ListNode l1, ListNode l2) {
+            return l1.val < l2.val ? -1 : 1;
+        }
+    }
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        Comparator<ListNode> comparator = new ListNodeComparator();
+        PriorityQueue<ListNode> heap = new PriorityQueue<>(5, comparator);
+
+        for (ListNode head : lists)
+            if (head != null)
+                heap.add(head);
+
+        ListNode dummyHead = new ListNode(-1), head = dummyHead;
+        while (!heap.isEmpty()) {
+            ListNode node = heap.poll();
+            head.next = node;
+            head = head.next;
+            if (head.next != null)
+                heap.add(head.next);
+        }
+
+        return dummyHead.next;
+    }
 }
